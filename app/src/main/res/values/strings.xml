@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Force Dark Mode</string>
+    <string name="module_description">Force selected apps to display in dark mode, including system apps.</string>
+    <string name="search_hint">Search apps…</string>
+    <string name="filter_all">All</string>
+    <string name="filter_system">System</string>
+    <string name="filter_user">User</string>
+</resources>

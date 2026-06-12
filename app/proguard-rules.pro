@@ -1,0 +1,2 @@
+-keep class com.example.lsposeddarkmode.DarkMode { *; }
+-keep class de.robv.android.xposed.** { *; }
