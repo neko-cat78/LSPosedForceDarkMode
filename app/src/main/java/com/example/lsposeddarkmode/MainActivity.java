@@ -38,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
     private enum FilterMode { ALL, SYSTEM, USER }
     private FilterMode currentFilter = FilterMode.ALL;
 
+    private SharedPreferences getPrefs() {
+        try {
+            return getSharedPreferences(PREFS_NAME, Context.MODE_WORLD_READABLE);
+        } catch (SecurityException e) {
+            return getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         PackageManager pm = getPackageManager();
         List<ApplicationInfo> installedApps = pm.getInstalledApplications(0);
 
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences prefs = getPrefs();
 
         allApps.clear();
         for (ApplicationInfo app : installedApps) {
@@ -174,8 +182,7 @@ public class MainActivity extends AppCompatActivity {
                     originalApps.remove(indexInAll);
                     originalApps.add(0, app);
                 }
-                SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-                prefs.edit().putBoolean(app.packageName, isChecked).apply();
+                getPrefs().edit().putBoolean(app.packageName, isChecked).apply();
                 refilter();
             });
 
