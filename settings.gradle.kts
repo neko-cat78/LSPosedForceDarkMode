@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "ForceDarkMode"
 include(":app")
+include(":xposed-api-stubs")
