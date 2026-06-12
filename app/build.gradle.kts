@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-    compileOnly("de.robv.android.xposed:api:82")
+    compileOnly(files("../stubs/java"))
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("com.google.android.material:material:1.11.0")
