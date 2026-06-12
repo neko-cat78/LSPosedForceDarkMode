@@ -84,14 +84,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadApps() {
         PackageManager pm = getPackageManager();
-        List<ApplicationInfo> installedApps = pm.getInstalledApplications(
-                PackageManager.MATCH_ALL_FLAGS);
+        List<ApplicationInfo> installedApps = pm.getInstalledApplications(0);
 
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
         allApps.clear();
         for (ApplicationInfo app : installedApps) {
-            if (app.packageName.equals(BuildConfig.APPLICATION_ID)) continue;
+            if (app.packageName.equals("com.example.lsposeddarkmode")) continue;
             boolean enabled = prefs.getBoolean(app.packageName, false);
             allApps.add(new AppInfo(app, pm, enabled));
         }
